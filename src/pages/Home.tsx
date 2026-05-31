@@ -314,6 +314,15 @@ export default function Home() {
         >
           <img src={asset("/assets/banners/merchbutton.png")} alt="Rokko! Merchandise" loading="lazy" decoding="async" />
         </a>
+        <div className="mw-item mw-social" data-testid="social-square">
+          <img src={asset("/assets/banners/socialsquare.png")} alt="Rokko! Social Media" loading="lazy" decoding="async" />
+          <div className="mw-social-grid">
+            <a href="https://www.tiktok.com/@rokkorecords" target="_blank" rel="noopener noreferrer" data-testid="link-tiktok" aria-label="TikTok" />
+            <a href="https://www.facebook.com/share/1Ee1dBz3bM/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" data-testid="link-facebook" aria-label="Facebook" />
+            <a href="https://www.instagram.com/rokko_records?igsh=MTdlbWhxbmtxdmVxeA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" data-testid="link-instagram" aria-label="Instagram" />
+            <a href="https://on.soundcloud.com/1Q1ox485CwP763IkLs" target="_blank" rel="noopener noreferrer" data-testid="link-soundcloud" aria-label="SoundCloud" />
+          </div>
+        </div>
         <div
           className="mw-item mw-wallpaper"
           onClick={() => setShowWallpaper(true)}
@@ -324,20 +333,6 @@ export default function Home() {
           onKeyDown={(e) => e.key === "Enter" && setShowWallpaper(true)}
         >
           <img src={asset("/assets/banners/wallpaperlinks.png")} alt="Wallpaper" loading="lazy" decoding="async" />
-        </div>
-      </div>
-
-      {/* BIGSOCIALBAR */}
-      <div className="social-bar-container" data-testid="social-bar">
-        <div className="social-bar-inner">
-          <img src={asset("/assets/banners/bigsocialbar.png")} alt="Rokko! Social Media" loading="lazy" decoding="async" />
-          <div className="social-bar-links">
-            <a href="https://www.instagram.com/rokko_records?igsh=MTdlbWhxbmtxdmVxeA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" data-testid="link-instagram" aria-label="Instagram" />
-            <a href="https://www.facebook.com/share/1Ee1dBz3bM/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" data-testid="link-facebook" aria-label="Facebook" />
-            <div style={{ flex: 1 }} />
-            <a href="https://www.tiktok.com/@rokkorecords" target="_blank" rel="noopener noreferrer" data-testid="link-tiktok" aria-label="TikTok" />
-            <a href="https://on.soundcloud.com/1Q1ox485CwP763IkLs" target="_blank" rel="noopener noreferrer" data-testid="link-soundcloud" aria-label="SoundCloud" />
-          </div>
         </div>
       </div>
 

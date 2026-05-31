@@ -137,35 +137,6 @@
     margin: 0;
   }
 
-  /* ════════════════════════════════════
-     BIGSOCIALBAR — IMMER VOLLE BREITE — NICHT ÄNDERN
-  ════════════════════════════════════ */
-  /* NICHT ÄNDERN: Abstand oben UND unten bigsocialbar */
-  .social-bar-container {
-    flex: 0 0 auto;
-    width: 100%;
-    padding: 0 0 var(--section-gap);
-    margin: 0;
-  }
-  .social-bar-inner {
-    position: relative;
-    width: 63%;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  .social-bar-inner > img {
-    width: 100%;
-    height: auto;
-    display: block;
-    padding: 0;
-    margin: 0;
-  }
-  .social-bar-links {
-    position: absolute; top: 0; left: 0; right: 0; height: 100%; display: flex;
-  }
-  .social-bar-links a,
-  .social-bar-links div { flex: 1; display: block; cursor: pointer; }
-
   /* ────────────────────────────────────
      SHOPS ROW (Digital Releases + Vinyl/CD)
   ──────────────────────────────────── */
@@ -212,7 +183,7 @@
   }
 
   /* COVER-Spalte links — bestimmt die Rahmenhöhe */
-  .news-cover-col { width: 28%; min-width: 0; }
+  .news-cover-col { width: 33%; min-width: 0; }
   .news-date {
     color: #fff; font-weight: 800; line-height: 1; text-align: center;
     font-size: clamp(11px, 2dvh, 16px); letter-spacing: 0; white-space: nowrap;
@@ -236,9 +207,9 @@
   .news-service svg { width: 4.5px; height: 4.5px; flex-shrink: 0; }
 
   /* VIDEO — liegt ÜBER dem Rahmen, höher versetzt; Rahmen ragt rechts + unten heraus */
-  .news-video { position: absolute; top: -10px; right: 16px; width: 65%; z-index: 3; }
+  .news-video { position: absolute; top: -10px; right: 14px; width: 68%; z-index: 3; }
   .news-video-wrap {
-    position: relative; width: 100%; aspect-ratio: 2 / 1;
+    position: relative; width: 100%; aspect-ratio: 20 / 9;
     border: 3px solid #B81C09; border-radius: 10px; overflow: hidden;
     background: #000; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.5);
   }
@@ -280,8 +251,8 @@
   ──────────────────────────────────── */
   .mw-row {
     flex: 0 0 auto;
-    display: flex; align-items: stretch; justify-content: center; gap: 4%;
-    width: 100%; padding: 0 18% var(--section-gap);
+    display: flex; align-items: center; justify-content: center; gap: 4.5%;
+    width: 100%; padding: 0 6% var(--section-gap);
   }
   .mw-item {
     min-width: 0; display: flex; align-items: center; justify-content: center;
@@ -290,8 +261,18 @@
   }
   .mw-item:hover { border-color: #B81C09; background: rgba(0,0,0,0.55); }
   .mw-item img { width: 100%; height: auto; display: block; }
-  .mw-merch { flex: 0 0 44%; }
-  .mw-wallpaper { flex: 1 1 0; }
+  .mw-merch { flex: 0 0 32%; }
+  .mw-social { flex: 0 0 18.5%; position: relative; }
+  .mw-wallpaper { flex: 0 0 32%; }
+
+  /* 2x2 Klick-Raster über socialsquare.png:
+     oben TikTok | Facebook — unten Instagram | SoundCloud */
+  .mw-social-grid {
+    position: absolute; inset: 3px;
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+  }
+  .mw-social-grid a { display: block; cursor: pointer; }
+  .mw-social-grid a:focus-visible { outline: 2px solid #fff; outline-offset: -2px; border-radius: 6px; }
 
   /* ────────────────────────────────────
      VIDEO FULLSCREEN POPUP
