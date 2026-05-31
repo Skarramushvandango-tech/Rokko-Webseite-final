@@ -30,16 +30,6 @@ function IconAmazon() {
   );
 }
 
-function IconYouTube() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2C0 8.08 0 12 0 12s0 3.92.5 5.8a3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14C24 15.92 24 12 24 12s0-3.92-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/>
-    </svg>
-  );
-}
-
-const YOUTUBE_URL = "https://www.youtube.com/@rokkorecords";
-
 export default function Home() {
   const [openArtist, setOpenArtist] = useState<string | null>(null);
   const [showWallpaper, setShowWallpaper] = useState(false);
@@ -257,7 +247,7 @@ export default function Home() {
           />
           <div className="news-frame">
             <div className="news-cover-col">
-              <div className="news-date">JUNE&nbsp;|&nbsp;13</div>
+              <div className="news-date">JUNE|13</div>
               <img
                 className="news-cover"
                 src={asset("/assets/coverartwork/war-cover.png")}
@@ -265,6 +255,11 @@ export default function Home() {
                 loading="lazy"
                 decoding="async"
               />
+              <div className="news-services" aria-hidden="true">
+                <span className="news-service"><IconSpotify /><span>Spotify</span></span>
+                <span className="news-service"><IconApple /><span>Apple&nbsp;Music</span></span>
+                <span className="news-service"><IconAmazon /><span>amazon&nbsp;music</span></span>
+              </div>
             </div>
             <div className="news-video">
               <div
@@ -286,11 +281,6 @@ export default function Home() {
                   onPlay={() => setNewsPlaying(true)}
                   onPause={() => setNewsPlaying(false)}
                 />
-                {!newsPlaying && (
-                  <button className="news-play-btn" onClick={(e) => { e.stopPropagation(); handleNewsPlay(); }} aria-label="Abspielen" data-testid="button-news-play">
-                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
-                  </button>
-                )}
                 <div className="news-tools" onClick={(e) => e.stopPropagation()}>
                   <button className="news-tool" onClick={handleNewsMute} aria-label={newsMuted ? "Ton an" : "Ton aus"} data-testid="button-news-mute">
                     {newsMuted ? (
@@ -299,19 +289,19 @@ export default function Home() {
                       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3z" /><path d="M16 7.5a5 5 0 010 9v-2a3 3 0 000-5z" /></svg>
                     )}
                   </button>
-                  <a className="news-tool" href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer" aria-label="YouTube" data-testid="link-news-youtube"><IconYouTube /></a>
+                  <button className="news-tool news-tool-play" onClick={(e) => { e.stopPropagation(); handleNewsPlay(); }} aria-label={newsPlaying ? "Pause" : "Abspielen"} data-testid="button-news-play">
+                    {newsPlaying ? (
+                      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z" /></svg>
+                    ) : (
+                      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+                    )}
+                  </button>
                   <button className="news-tool" onClick={(e) => { e.stopPropagation(); handleNewsFullscreen(); }} aria-label="Vollbild" data-testid="button-news-fullscreen">
                     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 14H5v5h5v-2H7zm-2-4h2V7h3V5H5zm12 7h-3v2h5v-5h-2zM14 5v2h3v3h2V5z" /></svg>
                   </button>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="news-stream">
-            <span className="news-stream-label">ab&nbsp;Juni&nbsp;auf:</span>
-            <span className="news-service"><IconSpotify /><span>Spotify</span></span>
-            <span className="news-service"><IconApple /><span>Apple&nbsp;Music</span></span>
-            <span className="news-service"><IconAmazon /><span>Amazon&nbsp;Music</span></span>
           </div>
         </div>
       </div>
