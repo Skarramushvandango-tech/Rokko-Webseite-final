@@ -256,6 +256,10 @@ export default function Home() {
                 loading="lazy"
                 decoding="async"
               />
+              <div className="news-cover-title">
+                <span>Sukram</span>
+                <span>I Am War</span>
+              </div>
             </div>
             <div className="news-video">
               <div

@@ -202,6 +202,18 @@
     object-fit: cover; display: block;
     box-shadow: 0 2px 5px rgba(0,0,0,0.45);
   }
+  /* Titel unter dem Cover: zwei Zeilen, weiss, max. so breit wie das Cover */
+  .news-cover-title {
+    width: 100%; margin-top: 4px;
+    display: flex; flex-direction: column; align-items: flex-start;
+    color: #fff; font-weight: 800; line-height: 1.05;
+    text-transform: uppercase; letter-spacing: 0.2px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.85);
+  }
+  .news-cover-title span {
+    display: block; max-width: 100%; white-space: nowrap;
+    font-size: clamp(8px, 1.5dvh, 12px);
+  }
 
   /* VIDEO — GRÖSSERE Karte, nach oben versetzt (ragt über die Outline) */
   .news-video { flex: 1 1 0; min-width: 0; margin-top: -20px; z-index: 3; }
