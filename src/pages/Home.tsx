@@ -246,6 +246,7 @@ export default function Home() {
             decoding="async"
           />
           <div className="news-frame">
+            <div className="news-top">
             <div className="news-cover-col">
               <div className="news-date">JUNE|13</div>
               <img
@@ -255,11 +256,6 @@ export default function Home() {
                 loading="lazy"
                 decoding="async"
               />
-              <div className="news-services">
-                <span className="news-service"><IconSpotify /><span>Spotify</span></span>
-                <span className="news-service"><IconApple /><span>Apple&nbsp;Music</span></span>
-                <span className="news-service"><IconAmazon /><span>amazon&nbsp;music</span></span>
-              </div>
             </div>
             <div className="news-video">
               <div
@@ -300,6 +296,15 @@ export default function Home() {
                     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 14H5v5h5v-2H7zm-2-4h2V7h3V5H5zm12 7h-3v2h5v-5h-2zM14 5v2h3v3h2V5z" /></svg>
                   </button>
                 </div>
+              </div>
+            </div>
+            </div>
+            <div className="news-services-row">
+              <span className="news-services-label">Ab dem 13. Juni überall auf:</span>
+              <div className="news-services">
+                <span className="news-service"><IconSpotify /><span>Spotify</span></span>
+                <span className="news-service"><IconApple /><span>Apple&nbsp;Music</span></span>
+                <span className="news-service"><IconAmazon /><span>amazon&nbsp;music</span></span>
               </div>
             </div>
           </div>

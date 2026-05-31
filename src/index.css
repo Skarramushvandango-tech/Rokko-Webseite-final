@@ -179,31 +179,33 @@
   /* Rahmen-Karte (Card A) — Video ist eine GRÖSSERE, versetzte Karte darüber */
   .news-frame {
     position: relative; z-index: 1; margin-top: 0; overflow: visible;
-    display: flex; align-items: flex-start;
+    display: flex; flex-direction: column;
     background: linear-gradient(180deg, #5e0c05 0%, #380606 100%);
     border: 2px solid #B81C09; border-radius: 12px;
-    padding: 11px 10px; min-height: 92px;
+    padding: 11px 10px;
     box-shadow: 0 3px 8px rgba(0,0,0,0.45);
   }
+  /* obere Zeile: kleines Cover links, großes Video rechts (nach oben versetzt) */
+  .news-top {
+    position: relative; display: grid;
+    grid-template-columns: 1fr 58% 1fr; align-items: start; column-gap: 6px;
+  }
 
-  /* COVER-Karte links + Streaming-Dienste darunter (Aufbau wie Master) */
-  .news-cover-col { flex: 0 0 30%; min-width: 0; }
+  /* COVER klein oben links — Breite = Breite des Datums (JUNE|13); quadratisch */
+  .news-cover-col { grid-column: 1; justify-self: start; width: clamp(50px, 13vw, 66px); min-width: 0; }
   .news-date {
     color: #fff; font-weight: 800; line-height: 1; text-align: left;
-    font-size: clamp(11px, 2dvh, 16px); letter-spacing: 0; white-space: nowrap;
-    margin: 0 0 5px 2px; text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    font-size: clamp(10px, 1.8dvh, 15px); letter-spacing: 0; white-space: nowrap;
+    margin: 0 0 4px 1px; text-shadow: 0 1px 3px rgba(0,0,0,0.8);
   }
   .news-cover {
-    width: 100%; margin: 0; aspect-ratio: 258 / 224; border-radius: 5px;
+    width: 100%; margin: 0; aspect-ratio: 1 / 1; border-radius: 4px;
     object-fit: cover; display: block;
-    border: 1px solid rgba(255,255,255,0.22);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.45);
   }
 
-  /* VIDEO — GRÖSSERE Karte (Card B), nach oben versetzt, ragt über die Outline */
-  .news-video {
-    position: absolute; top: -14px; left: 33%; right: 2%; z-index: 3;
-  }
+  /* VIDEO — GRÖSSERE Karte, nach oben versetzt (ragt über die Outline) */
+  .news-video { grid-column: 2; min-width: 0; margin-top: -20px; z-index: 3; }
   .news-video-wrap {
     position: relative; width: 100%; aspect-ratio: 2 / 1;
     border: 2px solid #B81C09; border-radius: 8px; overflow: hidden;
@@ -234,18 +236,27 @@
   .news-tool:hover { opacity: 0.8; transform: scale(1.15); }
   .news-tool:focus-visible { outline: 2px solid #fff; outline-offset: 1px; }
 
-  /* Streaming-Dienste UNTER dem Cover (Aufbau wie Master) */
+  /* Streaming-Dienste UNTEN im Rahmen, zentriert unter dem Video, mit Satz davor */
+  .news-services-row {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 4px; margin-top: 9px; text-align: center;
+  }
+  .news-services-label {
+    color: #fff; font-weight: 700; line-height: 1;
+    font-size: clamp(8px, 1.3dvh, 13px);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.85);
+  }
   .news-services {
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: nowrap; gap: 3px; margin-top: 6px; width: 100%;
+    display: flex; align-items: center; justify-content: center;
+    flex-wrap: nowrap; gap: clamp(10px, 4dvw, 26px);
   }
   .news-service {
-    flex: 0 1 auto; min-width: 0;
-    display: inline-flex; align-items: center; justify-content: center; gap: 2px;
-    color: #fff; opacity: 0.92; white-space: nowrap;
-    font-size: clamp(4px, 0.65dvh, 5.5px); font-weight: 600;
+    flex: 0 0 auto; min-width: 0;
+    display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+    color: #fff; opacity: 0.95; white-space: nowrap;
+    font-size: clamp(8px, 1.25dvh, 12px); font-weight: 600;
   }
-  .news-service svg { width: 6px; height: 6px; flex-shrink: 0; }
+  .news-service svg { width: 12px; height: 12px; flex-shrink: 0; }
 
   /* ────────────────────────────────────
      MERCH + WALLPAPER
