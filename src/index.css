@@ -127,7 +127,9 @@
     width: 100%;
     overflow: hidden;
     margin: 0;
-    padding: clamp(9px, 1.8dvh, 18px) 0 clamp(11px, 2.1dvh, 20px) 0;
+    /* padding-top = 0: schwarzer Rahmen liegt BÜNDIG an wirsindrokko.png an.
+       padding-bottom bleibt unverändert (Vorgabe). */
+    padding: 0 0 clamp(11px, 2.1dvh, 20px) 0;
   }
   .wirsindrokko-wrap img {
     width: 100%;
