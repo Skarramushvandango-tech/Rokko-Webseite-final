@@ -257,8 +257,8 @@ export default function Home() {
                 decoding="async"
               />
               <div className="news-cover-title">
-                <span>Sukram</span>
-                <span>I Am War</span>
+                <span className="nct-artist">Sukram</span>
+                <span className="nct-song">I Am War</span>
               </div>
             </div>
             <div className="news-video">
