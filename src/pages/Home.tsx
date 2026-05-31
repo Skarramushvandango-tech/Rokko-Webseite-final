@@ -46,7 +46,6 @@ export default function Home() {
   const [showDSE, setShowDSE] = useState(false);
   const [showImpressum, setShowImpressum] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
-  const [showVideoPopup, setShowVideoPopup] = useState(false);
   const [newsPlaying, setNewsPlaying] = useState(false);
   const [newsMuted, setNewsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -106,6 +105,19 @@ export default function Home() {
     setNewsMuted(v.muted);
   }, []);
 
+  const handleNewsFullscreen = useCallback(() => {
+    const v = newsVideoRef.current;
+    if (!v) return;
+    if (v.paused) { v.play().catch(() => {}); setNewsPlaying(true); }
+    const el = v as HTMLVideoElement & {
+      webkitEnterFullscreen?: () => void;
+      webkitRequestFullscreen?: () => void;
+    };
+    if (el.requestFullscreen) el.requestFullscreen().catch(() => {});
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    else if (el.webkitEnterFullscreen) el.webkitEnterFullscreen();
+  }, []);
+
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -114,13 +126,13 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (openArtist || showWallpaper || showVideoPopup) {
+    if (openArtist || showWallpaper) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
     return () => { document.body.style.overflow = ''; };
-  }, [openArtist, showWallpaper, showVideoPopup]);
+  }, [openArtist, showWallpaper]);
 
   return (
     <div className="rokko-page">
@@ -253,11 +265,6 @@ export default function Home() {
                 loading="lazy"
                 decoding="async"
               />
-              <div className="news-services" aria-hidden="true">
-                <span className="news-service"><IconSpotify /><span>Spotify</span></span>
-                <span className="news-service"><IconApple /><span>Apple&nbsp;Music</span></span>
-                <span className="news-service"><IconAmazon /><span>Amazon&nbsp;Music</span></span>
-              </div>
             </div>
             <div className="news-video">
               <div
@@ -293,12 +300,18 @@ export default function Home() {
                     )}
                   </button>
                   <a className="news-tool" href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer" aria-label="YouTube" data-testid="link-news-youtube"><IconYouTube /></a>
-                  <button className="news-tool" onClick={(e) => { e.stopPropagation(); setShowVideoPopup(true); }} aria-label="Vollbild" data-testid="button-news-fullscreen">
+                  <button className="news-tool" onClick={(e) => { e.stopPropagation(); handleNewsFullscreen(); }} aria-label="Vollbild" data-testid="button-news-fullscreen">
                     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 14H5v5h5v-2H7zm-2-4h2V7h3V5H5zm12 7h-3v2h5v-5h-2zM14 5v2h3v3h2V5z" /></svg>
                   </button>
                 </div>
               </div>
             </div>
+          </div>
+          <div className="news-stream">
+            <span className="news-stream-label">ab&nbsp;Juni&nbsp;auf:</span>
+            <span className="news-service"><IconSpotify /><span>Spotify</span></span>
+            <span className="news-service"><IconApple /><span>Apple&nbsp;Music</span></span>
+            <span className="news-service"><IconAmazon /><span>Amazon&nbsp;Music</span></span>
           </div>
         </div>
       </div>
@@ -410,21 +423,6 @@ export default function Home() {
             </button>
           </div>
         </>
-      )}
-
-      {showVideoPopup && (
-        <div className="video-popup-overlay" onClick={() => setShowVideoPopup(false)} data-testid="video-popup">
-          <div className="video-popup" onClick={(e) => e.stopPropagation()}>
-            <button className="video-popup-close" onClick={() => setShowVideoPopup(false)} aria-label="Schließen" data-testid="video-popup-close">✕</button>
-            <video
-              src={asset("/assets/videos/musicvideos/sukram_i_am_war.mp4")}
-              poster={asset("/assets/coverartwork/war-poster.jpg")}
-              controls
-              autoPlay
-              playsInline
-            />
-          </div>
-        </div>
       )}
 
       {showWallpaper && <WallpaperPopup onClose={() => setShowWallpaper(false)} />}
