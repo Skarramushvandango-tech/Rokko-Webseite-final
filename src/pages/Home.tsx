@@ -255,7 +255,7 @@ export default function Home() {
                 loading="lazy"
                 decoding="async"
               />
-              <div className="news-services" aria-hidden="true">
+              <div className="news-services">
                 <span className="news-service"><IconSpotify /><span>Spotify</span></span>
                 <span className="news-service"><IconApple /><span>Apple&nbsp;Music</span></span>
                 <span className="news-service"><IconAmazon /><span>amazon&nbsp;music</span></span>
