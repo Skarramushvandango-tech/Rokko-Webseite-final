@@ -187,12 +187,11 @@
   }
   /* obere Zeile: kleines Cover links, großes Video rechts (nach oben versetzt) */
   .news-top {
-    position: relative; display: grid;
-    grid-template-columns: 1fr 58% 1fr; align-items: start; column-gap: 6px;
+    position: relative; display: flex; align-items: flex-start; gap: 8px;
   }
 
-  /* COVER klein oben links — Breite = Breite des Datums (JUNE|13); quadratisch */
-  .news-cover-col { grid-column: 1; justify-self: start; width: clamp(50px, 13vw, 66px); min-width: 0; }
+  /* COVER winzig links — Breite = Breite des Datums (JUNE|13); quadratisch */
+  .news-cover-col { flex: 0 0 clamp(52px, 14vw, 70px); min-width: 0; }
   .news-date {
     color: #fff; font-weight: 800; line-height: 1; text-align: left;
     font-size: clamp(10px, 1.8dvh, 15px); letter-spacing: 0; white-space: nowrap;
@@ -205,7 +204,7 @@
   }
 
   /* VIDEO — GRÖSSERE Karte, nach oben versetzt (ragt über die Outline) */
-  .news-video { grid-column: 2; min-width: 0; margin-top: -20px; z-index: 3; }
+  .news-video { flex: 1 1 0; min-width: 0; margin-top: -20px; z-index: 3; }
   .news-video-wrap {
     position: relative; width: 100%; aspect-ratio: 2 / 1;
     border: 2px solid #B81C09; border-radius: 8px; overflow: hidden;
@@ -236,27 +235,28 @@
   .news-tool:hover { opacity: 0.8; transform: scale(1.15); }
   .news-tool:focus-visible { outline: 2px solid #fff; outline-offset: 1px; }
 
-  /* Streaming-Dienste UNTEN im Rahmen, zentriert unter dem Video, mit Satz davor */
+  /* Streaming-Dienste klein, UNTER dem Video zentriert (linker Versatz = Cover-Breite) */
   .news-services-row {
+    margin: 9px 0 0 calc(clamp(52px, 14vw, 70px) + 8px);
     display: flex; flex-direction: column; align-items: center;
-    gap: 4px; margin-top: 9px; text-align: center;
+    gap: 4px; text-align: center;
   }
   .news-services-label {
-    color: #fff; font-weight: 700; line-height: 1;
-    font-size: clamp(8px, 1.3dvh, 13px);
+    color: #fff; font-weight: 700; line-height: 1.1;
+    font-size: clamp(7px, 1dvh, 10px);
     text-shadow: 0 1px 2px rgba(0,0,0,0.85);
   }
   .news-services {
     display: flex; align-items: center; justify-content: center;
-    flex-wrap: nowrap; gap: clamp(10px, 4dvw, 26px);
+    flex-wrap: nowrap; gap: clamp(5px, 1.8dvw, 10px);
   }
   .news-service {
     flex: 0 0 auto; min-width: 0;
-    display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+    display: inline-flex; align-items: center; justify-content: center; gap: 3px;
     color: #fff; opacity: 0.95; white-space: nowrap;
-    font-size: clamp(8px, 1.25dvh, 12px); font-weight: 600;
+    font-size: clamp(6px, 0.95dvh, 9px); font-weight: 600;
   }
-  .news-service svg { width: 12px; height: 12px; flex-shrink: 0; }
+  .news-service svg { width: 9px; height: 9px; flex-shrink: 0; }
 
   /* ────────────────────────────────────
      MERCH + WALLPAPER
